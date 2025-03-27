@@ -48,21 +48,22 @@ void OutroState::ShowSingleplayerScore(){
 }
 
 void OutroState::ShowMultiplayerScore(){
-    std::wstring temp = std::to_wstring(StateMachine::gameData.datas[0]->Score);
-    const wchar_t* InText = temp.c_str();
+
     TextGO* ScoreTitle1 = new TextGO(WORLD_WIDTH/2 - 10, WORLD_HEIGHT/2-2 , L"Player1 Score: ");
     mGameObjects.emplace_back(ScoreTitle1);
 
-    //TextGO* Score1 = new TextGO(WORLD_WIDTH/2 + 10, WORLD_HEIGHT/2 - 2, InText);
-    //mGameObjects.emplace_back(Score1);
+    wchar_t* InText1 = (wchar_t*)StateMachine::gameData.datas[0]->Score;
+    TextGO* Score1 = new TextGO(WORLD_WIDTH/2 + 10, WORLD_HEIGHT/2 - 2, InText1);
+    mGameObjects.emplace_back(Score1);
 
     
-    std::wstring temp2 = std::to_wstring(StateMachine::gameData.datas[1]->Score);
-    const wchar_t* InText2 = temp.c_str();
-    TextGO* ScoreTitle2 = new TextGO(WORLD_WIDTH/2 - 10, WORLD_HEIGHT/2 + 2 , L"Player2 Score: ");
+    
+    
+    TextGO* ScoreTitle2 = new TextGO(WORLD_WIDTH/2 - 10, WORLD_HEIGHT/2 + 2 , L"Player2 Score: " );
     mGameObjects.emplace_back(ScoreTitle2);
 
-    //TextGO* Score2 = new TextGO(WORLD_WIDTH/2 + 10, WORLD_HEIGHT/2 + 2, InText2);
-//    mGameObjects.emplace_back(Score2);
+    wchar_t* InText2 = (wchar_t*)StateMachine::gameData.datas[1]->Score;
+    TextGO* Score2 = new TextGO(WORLD_WIDTH/2 + 10, WORLD_HEIGHT/2 + 2, InText2);
+    mGameObjects.emplace_back(Score2);
 
 }
