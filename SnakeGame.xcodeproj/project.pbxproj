@@ -93,6 +93,7 @@
 				TargetAttributes = {
 					857792562D7F045100EC9E04 = {
 						CreatedOnToolsVersion = 16.2;
+						LastSwiftMigration = 1620;
 					};
 				};
 			};
@@ -178,6 +179,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/SnakeGame/include/StateMachine",
+					"${PROJECT_DIR}/SnakeGame/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"${PROJECT_DIR}/SnakeGame/include/StateMachine",
+					"${PROJECT_DIR}/SnakeGame/include",
+				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -233,6 +242,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/SnakeGame/include/StateMachine",
+					"${PROJECT_DIR}/SnakeGame/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"${PROJECT_DIR}/SnakeGame/include/StateMachine",
+					"${PROJECT_DIR}/SnakeGame/include",
+				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -245,8 +262,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/SnakeGame/include",
+					"${PROJECT_DIR}/SnakeGame/include/StateMachine",
+				);
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"${PROJECT_DIR}/SnakeGame/include/StateMachine",
+					"${PROJECT_DIR}/SnakeGame/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"${PROJECT_DIR}/SnakeGame/include",
+					"${PROJECT_DIR}/SnakeGame/include/StateMachine",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -254,8 +286,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/SnakeGame/include",
+					"${PROJECT_DIR}/SnakeGame/include/StateMachine",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"${PROJECT_DIR}/SnakeGame/include",
+					"${PROJECT_DIR}/SnakeGame/include/StateMachine",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};

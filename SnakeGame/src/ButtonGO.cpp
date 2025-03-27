@@ -1,19 +1,17 @@
 #include "ButtonGO.h"
 #include "Game.h"
 #include "SnakeGraphics.h"
+#include "GameObject.h"
 
-ButtonGO::ButtonGO(const int x, const int y, wchar_t* Text, bool ButtonSelected):
-xPos{x},
-yPos{y},
+ButtonGO::ButtonGO(const int x, const int y, wchar_t* Text, char* ButtonName): GameObject(x, y),
+Name{ButtonName},
 mButtonText{Text},
-mIsButtonSelected{ButtonSelected},
 mSpaceBetweenDotAndText(2)
 {
-    
 }
 
 void ButtonGO::Render(){
-    
+    CreateButton();
 }
 
 void ButtonGO::CreateButton(){

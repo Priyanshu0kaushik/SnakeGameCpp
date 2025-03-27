@@ -1,34 +1,26 @@
 #include "StateMachine.h"
 #include <iostream>
 
-std::unique_ptr<StateMachine> StateMachine::mInstance = nullptr;
+StateMachine StateMachine::mInstance = StateMachine();
+StateMachine::GameData StateMachine::gameData = StateMachine::GameData();
 
 StateMachine& StateMachine::GetInstance(){
-    return  *mInstance;
+
+    return mInstance;
 }
 
-
-template <typename T>
-void StateMachine::SwitchState(){
-    for(int i=0; i<3; i++){
-        if(typeid(T) == typeid(*mStates[i])){
-            if(mCurrentState){
-                mCurrentState->CleanUp();
-            }
-            
-            mCurrentState = mStates[i];
-            mCurrentState->Init();
-            break;
-        }
-    }
+StateMachine::StateMachine(){
+    mStates[0] = new MenuState();
+    mStates[1] = new PlayState();
+    mStates[2] = new OutroState();
 }
 
-void StateMachine::Update(){
-    if(mCurrentState) mCurrentState->Update();
+void StateMachine::Update(float deltaTime){
+    if(mCurrentState) mCurrentState->Update(deltaTime);
 }
 
-void StateMachine::Render(SnakeGraphics& snakeGraphics){
-    if(mCurrentState) mCurrentState->Render(snakeGraphics);
+void StateMachine::Render(){
+    if(mCurrentState) mCurrentState->Render();
 }
 
 void StateMachine::KeyDown(int Key){

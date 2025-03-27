@@ -1,5 +1,5 @@
 #pragma once
-#include <Windows.h>
+//#include <Windows.h>
 #include <map>
 #include <vector>
 #include <functional>
@@ -40,15 +40,15 @@ private:
 		}
 	};
 
-	static LRESULT CALLBACK StaticWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
-	
+//	static LRESULT CALLBACK StaticWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+//	
 	int FrameId = 0;
 
-	std::map<unsigned int, HBRUSH> Brushes;
+//	std::map<unsigned int, HBRUSH> Brushes;
 
-	std::vector<std::function<LRESULT(HWND, UINT, WPARAM, LPARAM)>> WndProcs;
+//	std::vector<std::function<LRESULT(HWND, UINT, WPARAM, LPARAM)>> WndProcs;
 
-	HWND Hwnd = nullptr;
+//	HWND Hwnd = nullptr;
 
 	std::vector<TileData> NewTileGrid;
 
@@ -68,9 +68,9 @@ private:
 
 	bool WindowClosed = false;
 
-	LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+//	LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-	HBRUSH GetBrushWithColor(const Color InColor);
+//	HBRUSH GetBrushWithColor(const Color InColor);
 
 	bool IsTileWithinBounds(const int InX, const int InY) const;
 
@@ -91,13 +91,15 @@ public:
 
 	void Render();
 
+	void ClearScreen();
+
 	int GetNumColumns() const;
 
 	int GetNumRows() const;
 
 	bool UpdateWindowMessages();
 
-	void AddWndProc(std::function<LRESULT(HWND, UINT, WPARAM, LPARAM)> WndProc);
-
-	void RemoveWndProc(std::function<LRESULT(HWND, UINT, WPARAM, LPARAM)> WndProc);
+//	void AddWndProc(std::function<LRESULT(HWND, UINT, WPARAM, LPARAM)> WndProc);
+//
+//	void RemoveWndProc(std::function<LRESULT(HWND, UINT, WPARAM, LPARAM)> WndProc);
 };

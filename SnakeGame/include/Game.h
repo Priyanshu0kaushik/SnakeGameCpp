@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
-
-class SnakeGraphics;
+#include "SnakeGraphics.h"
 
 class Game{
   
@@ -13,9 +12,9 @@ public:
 private:
     Game() = default;
     const float FPS = 60.f;
-    static std::unique_ptr<Game> mInstance;
+    Game* mInstance;
     bool Init();
-    void Update();
+    void Update(float deltaTime);
     void Render();
     void CleanUp();
     void KeyDownCallback(int Key);

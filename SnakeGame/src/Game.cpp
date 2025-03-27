@@ -5,15 +5,14 @@
 #include "SnakeInput.h"
 #include "StateMachine.h"
 
-std::unique_ptr<Game> Game::mInstance = nullptr;
 
-Game& Game::GetInstance(){
-    return  *mInstance;
+Game& Game::GetInstance() {
+    static Game mInstance;
+    return mInstance;
 }
-
 bool Game::Init(){
     snakeGraphics = new SnakeGraphics(1024, 720, WORLD_WIDTH, WORLD_HEIGHT);
-    if(snakeGraphics->Init()){
+    if(!snakeGraphics->Init()){
         std::cerr<<"SnakeGraphics not initialized."<<std::endl;
         return false;
     }
@@ -32,6 +31,7 @@ void Game::KeyDownCallback(int Key)
 }
 
 void Game::Run(){
+    snakeGraphics->ClearScreen();
     if (!Init())
     {
         std::cerr << "Init failed!" << std::endl;
@@ -40,33 +40,35 @@ void Game::Run(){
     }
 
     std::chrono::system_clock::time_point timer = std::chrono::system_clock::now();
-    float elapsedTime =0.f;
+    float elapsedTime = 0.f;
     float targetFrameTime = 1/FPS;
     
-    while (snakeGraphics->UpdateWindowMessages()){
+    while (true){
         std::chrono::duration<float> frameDeltaTime = std::chrono::system_clock::now() - timer;
         timer = std::chrono::system_clock::now();
         
         elapsedTime += frameDeltaTime.count();
         while(elapsedTime > targetFrameTime){
+            Update(elapsedTime);
+            std::cout<<elapsedTime<<std::endl;
             elapsedTime -= targetFrameTime;
-            Update();
             Render();
         }
     }
 }
 
-void Game::Update(){
-    StateMachine::GetInstance().Update();
+void Game::Update(float deltaTime){
+    StateMachine::GetInstance().Update(deltaTime);
 }
 
 void Game::Render(){
     
-    StateMachine::GetInstance().Render(*snakeGraphics);
+    StateMachine::GetInstance().Render();
     snakeGraphics->Render();
 }
 
 void Game::CleanUp(){
     SnakeInput::CleanUp();
     delete snakeGraphics;
+    delete mInstance;
 }

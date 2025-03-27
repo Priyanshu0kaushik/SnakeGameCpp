@@ -2,7 +2,7 @@
 #include <functional>
 #include <vector>
 #include <map>
-#include "Windows.h"
+//#include "Windows.h"
 
 class SnakeGraphics;
 
@@ -15,7 +15,7 @@ private:
 
 	std::vector<std::function<void(int)>> OnKeyUpCallbacks;
 
-	std::function<LRESULT(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)> WndProcFunction;
+//	std::function<LRESULT(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)> WndProcFunction;
 
 	SnakeGraphics* Graphics = nullptr;
 
@@ -23,7 +23,7 @@ private:
 
 	~SnakeInput();
 
-	LRESULT WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+//	LRESULT WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 public:
 	static bool Init(SnakeGraphics* InGraphics);
 

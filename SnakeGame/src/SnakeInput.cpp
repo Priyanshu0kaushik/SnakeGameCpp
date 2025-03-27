@@ -6,16 +6,16 @@ SnakeInput* SnakeInput::Instance = nullptr;
 
 SnakeInput::SnakeInput(SnakeGraphics* InGraphics) : Graphics(InGraphics)
 {
-	WndProcFunction = std::bind(&SnakeInput::WndProc, this,
-		std::placeholders::_1, std::placeholders::_2,
-		std::placeholders::_3, std::placeholders::_4);
-
-	Graphics->AddWndProc(WndProcFunction);
+//	WndProcFunction = std::bind(&SnakeInput::WndProc, this,
+//		std::placeholders::_1, std::placeholders::_2,
+//		std::placeholders::_3, std::placeholders::_4);
+//
+//	Graphics->AddWndProc(WndProcFunction);
 }
 
 SnakeInput::~SnakeInput()
 {
-	Graphics->RemoveWndProc(WndProcFunction);
+//	Graphics->RemoveWndProc(WndProcFunction);
 }
 
 bool SnakeInput::Init(SnakeGraphics* InGraphics)
@@ -32,25 +32,25 @@ bool SnakeInput::Init(SnakeGraphics* InGraphics)
 	return true;
 }
 
-LRESULT SnakeInput::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
-{
-    switch (msg)
-    {
-    case WM_KEYDOWN:
-		for (auto it = Instance->OnKeyDownCallbacks.begin(); it != Instance->OnKeyDownCallbacks.end(); ++it)
-		{
-			(*it)((int)wParam);
-		}
-        break;
-	case WM_KEYUP:
-		for (auto it = Instance->OnKeyUpCallbacks.begin(); it != Instance->OnKeyUpCallbacks.end(); ++it)
-		{
-			(*it)((int)wParam);
-		}
-		break;
-	}
-    return DefWindowProc(hwnd, msg, wParam, lParam);
-}
+//LRESULT SnakeInput::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+//{
+//    switch (msg)
+//    {
+//    case WM_KEYDOWN:
+//		for (auto it = Instance->OnKeyDownCallbacks.begin(); it != Instance->OnKeyDownCallbacks.end(); ++it)
+//		{
+//			(*it)((int)wParam);
+//		}
+//        break;
+//	case WM_KEYUP:
+//		for (auto it = Instance->OnKeyUpCallbacks.begin(); it != Instance->OnKeyUpCallbacks.end(); ++it)
+//		{
+//			(*it)((int)wParam);
+//		}
+//		break;
+//	}
+//    return DefWindowProc(hwnd, msg, wParam, lParam);
+//}
 
 
 void SnakeInput::AddKeyDownCallback(std::function<void(int)> KeyDownCallback)
