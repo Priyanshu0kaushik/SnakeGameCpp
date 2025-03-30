@@ -2,7 +2,6 @@
 #include "PlayGameObject.h"
 #include <iostream>
 #include <vector>
-#include "World.h"
 #include "Game.h"
 #include "Apple.h"
 #include "SnakeGraphics.h"
@@ -13,6 +12,7 @@ mDirection{0,1},
 myData{Data},
 mPlayerAgent(playerAgent)
 {
+    mPlayerAgent->mSnake = this;
     world->SnakeData.emplace_back(myData);
     mBody.emplace_back(x,y);
 }
@@ -112,4 +112,8 @@ void Snake::OnCollision(PlayGameObject* gameObject){
     else{
         
     }
+}
+
+std::pair<int, int> Snake::GetHead(){
+    return mBody.front();
 }

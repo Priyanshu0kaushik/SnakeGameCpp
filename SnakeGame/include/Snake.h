@@ -14,12 +14,13 @@ public:
     bool GetPos(int index, std::pair<int,int>& outPos) override;
     void OnCollision(PlayGameObject* gameObject) override;
     World::snakeData* myData;
+    std::vector<std::pair<int, int>> mBody;
+    std::pair<int, int> GetHead();
 //    void Destroy() override;
 //    bool IsDestroyed() override;
     
 private:
     BaseAgent* mPlayerAgent;
-    std::vector<std::pair<int, int>> mBody;
     std::pair<int, int> mDirection;
     int mPreviousDirection;
     bool mHasEatenApple;

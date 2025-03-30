@@ -305,3 +305,17 @@ void World::BattleModeUpdate(){
         }
     }
 }
+
+std::pair<int, int> World::GetApplePos(){
+    std::pair<int, int> outPos;
+    for(PlayGameObject* gameObject : mGameObjects){
+        if(typeid(gameObject) == typeid(Apple)){
+            gameObject->GetPos(0, outPos);
+        }
+    }
+    return outPos;
+}
+
+bool* World::GetLevel(){
+    return &level[0];
+}

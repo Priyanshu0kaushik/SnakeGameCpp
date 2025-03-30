@@ -1,5 +1,6 @@
 #pragma once
 
+class Snake;
 class BaseAgent{
   
 public:
@@ -12,6 +13,7 @@ public:
         LEFT = 3
         
     };
+    Snake* mSnake;
     virtual void KeyDown(int Key);
     virtual int GetNextDirection() = 0;
 };

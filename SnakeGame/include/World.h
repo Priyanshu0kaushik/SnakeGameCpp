@@ -32,12 +32,13 @@ public:
     void OverGame();
     void AddScore(snakeData* Data);
     std::vector<snakeData*> SnakeData;
+    std::pair<int, int> GetApplePos();
+    bool* GetLevel();
 private:
 
     int mCurrentAppleCount = 0;
     int levelId = 1;
     bool level[WORLD_WIDTH * WORLD_HEIGHT];
-    
     std::map<int,std::vector<Collision>> mCollisions;
     std::vector<PlayerAgent*> mAgents;
     std::vector<PlayGameObject*> mGameObjects;
@@ -49,5 +50,6 @@ private:
     void CoOpModeUpdate();
     void BattleModeUpdate();
     void SpawnApple(int count);
+    
     
 };
