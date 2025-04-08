@@ -12,6 +12,12 @@ struct Node {
     bool operator>(const Node& other) const { return f > other.f; }
 };
 
+struct CompareNode {
+    bool operator()(const Node* a, const Node* b) const {
+        return a->f > b->f;
+    }
+};
+
 class AStar {
 public:
     std::vector<std::pair<int, int>> FindPath(std::pair<int, int> startPos, std::pair<int, int> goalPos, bool tiles[], std::vector<std::pair<int, int>> snakeBody);

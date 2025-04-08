@@ -13,7 +13,7 @@ int AStar::Heuristic(std::pair<int, int> a, std::pair<int, int> b) {
 
 std::vector<std::pair<int, int>> AStar::FindPath(std::pair<int, int> startPos, std::pair<int, int> goalPos, bool tiles[], std::vector<std::pair<int, int>> snakeBody) {
     std::vector<Node> nodes;
-    std::priority_queue<Node*, std::vector<Node*>, std::greater<Node>> openList;
+    std::priority_queue<Node*, std::vector<Node*>, CompareNode> openList;
     std::vector<Node*> closedList;
 
     for (int i = 0; i < WORLD_HEIGHT; i++) {
